@@ -34,13 +34,6 @@ public class ArithmeticCalculatorServlet extends HttpServlet
         String multiply = request.getParameter("*");
         String divide = request.getParameter("%");
         
-        request.setAttribute("first", first);
-        request.setAttribute("second", second);
-        request.setAttribute("+", add);
-        request.setAttribute("-", subtract);
-        request.setAttribute("*", multiply);
-        request.setAttribute("%", divide);
-        
         if(first == null || first.equals("") || 
            second == null || second.equals("") || 
            !first.matches("[0-9]+") || 
@@ -51,30 +44,30 @@ public class ArithmeticCalculatorServlet extends HttpServlet
                 .forward(request, response);
             return;
         }
-        if(request.getAttribute("+") != null)
+        if(add != null)
         {
-             request.setAttribute("message",(Integer.parseInt(first) + Integer.parseInt(second)));
+             request.setAttribute("message","Result: " + (Integer.parseInt(first) + Integer.parseInt(second)));
         }
         
-        if(request.getAttribute("-") != null)
+        if(subtract != null)
         {
-             request.setAttribute("message",(Integer.parseInt(first) - Integer.parseInt(second)));
+             request.setAttribute("message","Result: " +(Integer.parseInt(first) - Integer.parseInt(second)));
         }
         
-        if(request.getAttribute("*") != null)
+        if(multiply != null)
         {
-             request.setAttribute("message",(Integer.parseInt(first) * Integer.parseInt(second)));
+             request.setAttribute("message","Result: " +(Integer.parseInt(first) * Integer.parseInt(second)));
         }
         
-        if(request.getAttribute("%") != null)
+        if(divide != null)
         {
-            if(Integer.parseInt(first) == 0 && Integer.parseInt(second) == 0)
+            if(Integer.parseInt(second) == 0)
             {
                 request.setAttribute("message", "Invalid");
             }
             else
             {
-                request.setAttribute("message",(Integer.parseInt(first) / Integer.parseInt(second)));
+                request.setAttribute("message","Result: " +(Integer.parseInt(first) / Integer.parseInt(second)));
             }
         }
         
