@@ -63,7 +63,7 @@ public class ArithmeticCalculatorServlet extends HttpServlet
         {
             if(Integer.parseInt(second) == 0)
             {
-                request.setAttribute("message", "Invalid");
+                request.setAttribute("message", "Invalid ");
             }
             else
             {
